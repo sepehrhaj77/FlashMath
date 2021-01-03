@@ -131,7 +131,7 @@ function loadDivision(){
     problems = [];
     for(var i=0; i<100; i++){
         factor1 = Math.floor(Math.random() * 13);                  //multiply two numbers first to ensure generated factors are divisible 
-        factor2 = Math.floor(Math.random() * 13);                  //(if we generate two random numbers to divide, they might not work out to a whole number)
+        factor2 = Math.floor(Math.random() * 12) + 1;              //plus one to exclude 0
         product = factor1 * factor2;
         problems.push({num1: product, num2: factor1, ans: factor2});  
     }
