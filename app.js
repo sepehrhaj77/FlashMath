@@ -1,3 +1,5 @@
+//TODO: FIX THAT IT GOES BACK TO MAIN SCREEN WHEN DONE
+
 //TIMER CODE
 document.getElementById('timer').innerText = "05:00";
 var interval;
@@ -21,7 +23,7 @@ function startTimer(duration, display) {
     }, 1000);
 }
 function callTimer(){
-    var duration = 60*2;
+    var duration = 60*5;
     var display = document.querySelector('#timer');
     startTimer(duration, display);
 }
