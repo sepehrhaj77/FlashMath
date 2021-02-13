@@ -176,7 +176,7 @@ function mainDriver(){
     var sym = document.getElementsByClassName('symbol')[0].innerHTML;
     if(verifyAnswer()){
         probCount+=1;
-        if(probCount>=3){
+        if(probCount>=MAX_PROBLEMS){
             alert("All problems completed!")
         }
         else{
