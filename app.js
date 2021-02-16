@@ -1,4 +1,4 @@
-//TODO: FIX THAT IT GOES BACK TO MAIN SCREEN WHEN DONE
+
 const MAX_PROBLEMS = 100
 //TIMER CODE
 document.getElementById('timer').innerText = "05:00";
@@ -44,7 +44,6 @@ topics.forEach(topic => {
     const symbol = topic.classList[1]; //grab topic from class given to buttons
     topic.addEventListener('click', function(){
         topicClicked(symbol);
-        document.getElementById('information-container').style.display = "flex";
     } );
 })
 
@@ -52,6 +51,27 @@ var problems = [];
 var probCount = 0; //counting which problem we are on, from 0-99, to access it in the array
 //loads the appropriate set of problems based on which button was pressed
 function topicClicked(topic){
+    //APPLY fade transition to topic screen
+    const topics = Array.from(document.getElementsByClassName('topic-box'))
+    topics.forEach(t => {
+        t.classList.add('fade')
+    })
+    document.getElementById('title').classList.add('fade')
+
+    //UNAPPLY fade transition from problem screen
+    document.getElementById('information-container').classList.remove('fade')
+    document.getElementById('switch-topic-button').classList.remove('fade')
+    document.getElementById('problem-box').classList.remove('fade')
+
+    //load problems
+    document.getElementById('title').addEventListener('animationend', ()=>{
+        document.getElementById('information-container').style.display = "flex";
+        showProblems(topic)
+    })
+    
+}
+
+function showProblems(topic){
     document.getElementById('topics-container').style.display = "none";
     document.getElementById('title').style.display = "none";
     document.getElementById('switch-topic-button').style.display = "flex";
@@ -79,9 +99,7 @@ function topicClicked(topic){
             numberUpdater(sym);
             break;
     }
-    
 }
-
 
 
 //-------------------------------------------------------------------------------------
@@ -171,8 +189,8 @@ function numberUpdater(sym){
     document.getElementsByClassName('bottom-number')[0].innerText = problems[probCount].num2;  
 }
 
+//goes through all the problems and verifies validity of each answer
 function mainDriver(){
-    
     var sym = document.getElementsByClassName('symbol')[0].innerHTML;
     if(verifyAnswer()){
         probCount+=1;
@@ -192,14 +210,33 @@ function mainDriver(){
 
 //FUNCTION TO BRING BACK TOPICS
 function switchTopic(){
-    document.getElementById('switch-topic-button').style.display = "none";
-    document.getElementById('topics-container').style.display = "flex";
-    document.getElementById('title').style.display = "flex";
-    document.getElementById('information-container').style.display = "none";
-    clearInterval(interval);
-    document.getElementById('timer').innerText = "05:00";
-    document.getElementById('problem-count').innerText = "1/100";
-    probCount = 0;
+    //apply and unapply fade transition to elements based on whether we are picking a topic or solving problems
+    //----------------------------------
+    //APPLYING to problem page
+    document.getElementById('information-container').classList.add('fade')
+    document.getElementById('switch-topic-button').classList.add('fade')
+    document.getElementById('problem-box').classList.add('fade')
+
+    //UNAPPLYING from topic selection page
+    const topics = Array.from(document.getElementsByClassName('topic-box'))
+    topics.forEach(t => {
+        t.classList.remove('fade')
+    })
+    document.getElementById('title').classList.remove('fade')
+
+    document.getElementById('problem-box').addEventListener('animationend', ()=>{
+        //bring back topic selection and remove problem interface
+        document.getElementById('switch-topic-button').style.display = "none";
+        document.getElementById('topics-container').style.display = "flex";
+        document.getElementById('title').style.display = "flex";
+        document.getElementById('information-container').style.display = "none";
+        clearInterval(interval);
+        document.getElementById('timer').innerText = "05:00";
+        document.getElementById('problem-count').innerText = "1/100";
+        probCount = 0;
+        document.getElementById('problem-box').style.display = "none";
+    })
+    
 }
 
 //set problem counter
