@@ -52,6 +52,7 @@ html, body{
 }
 #title{
     display: flex;
+    position: relative;
     justify-content: center;
     margin-top: 5%;
 }
@@ -166,6 +167,12 @@ html, body{
         transform: translateY(0);
     }
     to {transform: translateY(100px);}
+}
+#leaderboard-link{
+    position: absolute;
+    right: 12vw;
+    bottom: 20px;
+    font-size: 20px;
 }
 
 /* remove arrow buttons from input field*/

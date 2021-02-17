@@ -1,5 +1,6 @@
+//TODO: DO NOT ALLOW ZERO DIVIDED BY ZERO ERROR
 
-const MAX_PROBLEMS = 100
+const MAX_PROBLEMS = 200
 //TIMER CODE
 document.getElementById('timer').innerText = "05:00";
 var interval;
@@ -18,6 +19,7 @@ function startTimer(duration, display) {
         if (--timer < 0) {
             alert('timer completed');
             clearInterval(interval);
+            checkLeaderboard();
         }
         
     }, 1000);
@@ -52,7 +54,7 @@ var probCount = 0; //counting which problem we are on, from 0-99, to access it i
 //loads the appropriate set of problems based on which button was pressed
 function topicClicked(topic){
     //APPLY fade transition to topic screen
-    const topics = Array.from(document.getElementsByClassName('topic-box'))
+    const topics = document.querySelectorAll('.topic-box')
     topics.forEach(t => {
         t.classList.add('fade')
     })
@@ -71,12 +73,13 @@ function topicClicked(topic){
     
 }
 
+var sym; //global variable to let the app know which category is being solved
 function showProblems(topic){
     document.getElementById('topics-container').style.display = "none";
     document.getElementById('title').style.display = "none";
     document.getElementById('switch-topic-button').style.display = "flex";
     document.getElementById('problem-box').style.display = "flex";
-    var sym;
+    
     switch(topic){
         case "addition":
             sym = "+";
@@ -120,7 +123,6 @@ function loadAddition(){
         problems.push({num1: num1, num2: num2, ans: ans});  
     }
     
-    console.log(problems);
 }
 
 function loadSubtraction(){
@@ -134,7 +136,6 @@ function loadSubtraction(){
         ans = num1-num2;
         problems.push({num1: num1, num2: num2, ans: ans});  
     }
-    console.log(problems);
 }
 
 function loadMultiplication(){
@@ -148,7 +149,6 @@ function loadMultiplication(){
         ans = num1*num2;
         problems.push({num1: num1, num2: num2, ans: ans});  
     }
-    console.log(problems);
 }
 
 
@@ -164,7 +164,6 @@ function loadDivision(){
         product = factor1 * factor2;
         problems.push({num1: product, num2: factor1, ans: factor2});  
     }
-    console.log(problems)
 }
 
 //-------------------------------------------------------------------------------------
@@ -218,7 +217,7 @@ function switchTopic(){
     document.getElementById('problem-box').classList.add('fade')
 
     //UNAPPLYING from topic selection page
-    const topics = Array.from(document.getElementsByClassName('topic-box'))
+    const topics = document.querySelectorAll('.topic-box')
     topics.forEach(t => {
         t.classList.remove('fade')
     })
@@ -237,6 +236,167 @@ function switchTopic(){
         document.getElementById('problem-box').style.display = "none";
     })
     
+}
+
+
+//check the leaderboard and update if necessary
+function checkLeaderboard(){
+    const score = probCount;
+    let highScores;
+    //check score to appropriate high score
+    //sym is global variable letting us know what type of problems are being done currently
+    switch(sym){
+        case "+":
+            var cat = "addition"
+            highScores = getHighScores(cat)
+            //if there are not 5 scores yet, just add it
+            if(highScores.length < 5){
+                updateStorage(cat, score)
+            }
+            //if 5 scores exist, we need to see if we add this one
+            else{
+                //if the array is not empty, access it and check whether or not we add to it
+                if(highScores != ''){
+                    //check the current score against the current top 5
+                    let i = 0;
+                    while(i < highScores.length){
+                        if(score > highScores[i]){
+                            updateStorage(cat, score)
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                //if it is empty, add it to the empty array
+                else{
+                    updateStorage(cat, score)
+                } 
+
+                checkSize(cat)
+            }     
+            break;
+        case "-":
+            var cat = "subtraction"
+            highScores = getHighScores(cat)
+            //if there are not 5 scores yet, just add it
+            if(highScores.length < 5){
+                updateStorage(cat, score)
+            }
+            //if 5 scores exist, we need to see if we add this one
+            else{
+                //if the array is not empty, access it and check whether or not we add to it
+                if(highScores != ''){
+                    //check the current score against the current top 5
+                    let i = 0;
+                    while(i < highScores.length){
+                        if(score > highScores[i]){
+                            updateStorage(cat, score)
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                //if it is empty, add it to the empty array
+                else{
+                    updateStorage(cat, score)
+                } 
+
+                checkSize(cat)
+            }
+            break;
+        case "&times":
+            var cat = "multiplication"
+            highScores = getHighScores(cat)
+            //if there are not 5 scores yet, just add it
+            if(highScores.length < 5){
+                updateStorage(cat, score)
+            }
+            //if 5 scores exist, we need to see if we add this one
+            else{
+                //if the array is not empty, access it and check whether or not we add to it
+                if(highScores != ''){
+                    //check the current score against the current top 5
+                    let i = 0;
+                    while(i < highScores.length){
+                        if(score > highScores[i]){
+                            updateStorage(cat, score)
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                //if it is empty, add it to the empty array
+                else{
+                    updateStorage(cat, score)
+                } 
+
+                checkSize(cat)
+            }
+            break;
+        case "&divide":
+            var cat = "division"
+            highScores = getHighScores(cat)
+            //if there are not 5 scores yet, just add it
+            if(highScores.length < 5){
+                updateStorage(cat, score)
+            }
+            //if 5 scores exist, we need to see if we add this one
+            else{
+                //if the array is not empty, access it and check whether or not we add to it
+                if(highScores != ''){
+                    //check the current score against the current top 5
+                    let i = 0;
+                    while(i < highScores.length){
+                        if(score > highScores[i]){
+                            updateStorage(cat, score)
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                //if it is empty, add it to the empty array
+                else{
+                    updateStorage(cat, score)
+                } 
+
+                checkSize(cat)
+            }
+            break;
+    }
+}
+
+//If array has more than 5 scores, delete lowest one
+function checkSize(category){
+    var array = JSON.parse(localStorage.getItem(category))
+    array.sort(function(a, b){return b-a});
+    if(array.length > 5){
+        console.log(array)
+        console.log(array.pop())
+    }
+    localStorage.setItem(category, JSON.stringify(array))
+}
+
+//update local storage arrays holding high scores
+function updateStorage(category, score){
+    let array;
+    //if the array does not exist, create it and set the current score as the initial value
+    if(localStorage.getItem(category) === null){
+        array = []
+    }
+    else{
+        array = JSON.parse(localStorage.getItem(category))
+    }
+
+    array.push(score)
+
+    localStorage.setItem(category, JSON.stringify(array))
+}
+
+function getHighScores(category){
+    if(localStorage.getItem(category) === null){
+        return ''
+    }
+    return JSON.parse(localStorage.getItem(category))
 }
 
 //set problem counter
