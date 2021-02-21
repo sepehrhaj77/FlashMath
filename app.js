@@ -142,8 +142,8 @@ function loadMultiplication(){
     var ans;
     problems = [];
     for(var i=0; i<MAX_PROBLEMS; i++){
-        num1 = Math.floor(Math.random() * 13);                  //first number between 0-12
-        num2 = Math.floor(Math.random() * 13);                  //second number between 0-12
+        num1 = Math.floor(Math.random() * 12) + 1;                  //first number between 1-12
+        num2 = Math.floor(Math.random() * 12) + 1;                  //second number between 1-12
         ans = num1*num2;
         problems.push({num1: num1, num2: num2, ans: ans});  
     }
@@ -158,7 +158,7 @@ function loadDivision(){
     problems = [];
     for(var i=0; i<MAX_PROBLEMS; i++){
         factor1 = Math.floor(Math.random() * 13);                  //multiply two numbers first to ensure generated factors are divisible 
-        factor2 = Math.floor(Math.random() * 12) + 1;              //plus one to exclude 0 as a possibility
+        factor2 = Math.floor(Math.random() * 12) + 1;              //plus one to exclude 0 as a possibility for the denominator
         product = factor1 * factor2;
         problems.push({num1: product, num2: factor2, ans: factor1});  
     }
