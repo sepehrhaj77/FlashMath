@@ -1,5 +1,3 @@
-//TODO: DO NOT ALLOW ZERO DIVIDED BY ZERO ERROR
-
 const MAX_PROBLEMS = 200
 //TIMER CODE
 document.getElementById('timer').innerText = "05:00";
@@ -162,7 +160,7 @@ function loadDivision(){
         factor1 = Math.floor(Math.random() * 13);                  //multiply two numbers first to ensure generated factors are divisible 
         factor2 = Math.floor(Math.random() * 12) + 1;              //plus one to exclude 0 as a possibility
         product = factor1 * factor2;
-        problems.push({num1: product, num2: factor1, ans: factor2});  
+        problems.push({num1: product, num2: factor2, ans: factor1});  
     }
 }
 
