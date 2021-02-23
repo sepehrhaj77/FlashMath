@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flash Math!</title>
+    <script src="https://kit.fontawesome.com/ba8ab2eda3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
     
 </head>
@@ -39,12 +40,15 @@
         </div>  
         <div class="answer-container">
             <form id="answer-form" onsubmit="mainDriver(); return false">
-                <input type="number" class="answer-box" name="answer-box" autofocus="autofocus" onfocus="this.value=''">
+                <input type="number" id="answer-box" class="answer-box" name="answer-box" autofocus="autofocus" onfocus="this.value=''">
             </form>
         </div>
         <button id="start-timer-button" onclick="callTimer()">Start!</button>
     </div>
 
+    <!-- hidden element that will be used for new record animation -->
+    <i id="new-record-animation" class="fas fa-star" style="display: none;"></i>
+    <p id="new-record-animation-text" style="display: none;">New<br>Record!</p>
 
     <script src="app.js"></script>
 </body>
