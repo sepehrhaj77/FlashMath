@@ -23,7 +23,7 @@ function startTimer(duration, display) {
     }, 1000);
 }
 function callTimer(){
-    var duration = 1*5;
+    var duration = 60*5;
     var display = document.querySelector('#timer');
     document.getElementById('start-timer-button').style.display = 'none';
     startTimer(duration, display);
