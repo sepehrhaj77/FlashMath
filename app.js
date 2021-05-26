@@ -119,8 +119,8 @@ function loadAddition(){
     var ans;
     problems = [];
     for(var i=0; i<MAX_PROBLEMS; i++){
-        num1 = Math.floor(Math.random() * 31);                  //first number between 0-30
-        num2 = Math.floor(Math.random() * 31);                  //second number between 0-30
+        num1 = Math.floor(Math.random() * 11);                  //first number between 0-30
+        num2 = Math.floor(Math.random() * 11);                  //second number between 0-30
         ans = num1+num2;
         problems.push({num1: num1, num2: num2, ans: ans});  
     }
