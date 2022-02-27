@@ -328,8 +328,7 @@ function checkLeaderboard() {
 function checkSize(category) {
 	var array = getHighScores(category)
 	if (array.length > 5) {
-		console.log(array)
-		console.log(array.pop())
+		array.pop()
 	}
 	localStorage.setItem(category, JSON.stringify(array))
 }
@@ -347,7 +346,7 @@ function updateStorage(category, score) {
 	let d = new Date()
 
 	const obj = { score, date: d.getMonth() + '/' + d.getDate() }
-	array.push(score)
+	array.push(obj)
 
 	localStorage.setItem(category, JSON.stringify(array))
 }
@@ -358,9 +357,8 @@ function getHighScores(category) {
 	if (array === null) {
 		return ''
 	}
-	console.log(array)
 	array.sort(function (a, b) {
-		return b - a
+		return b.score - a.score
 	})
 	return array
 }
