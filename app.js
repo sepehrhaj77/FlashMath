@@ -189,7 +189,7 @@ function numberUpdater(sym) {
 
 function tempAlert(msg, duration) {
 	var el = document.createElement('div')
-	el.setAttribute('style', 'position:absolute;top:40%;left:20%;background-color:white;')
+	el.setAttribute('style', 'position:absolute;top:40%;left:20%;background-color:white;font-size:4rem;')
 	el.innerHTML = msg
 	setTimeout(function () {
 		el.parentNode.removeChild(el)
