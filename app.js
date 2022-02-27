@@ -22,7 +22,8 @@ function startTimer(duration, display) {
 	}, 1000)
 }
 function callTimer() {
-	var duration = 60 * 5
+	//var duration = 60 * 5
+	var duration = 5
 	var display = document.querySelector('#timer')
 	document.getElementById('start-timer-button').style.display = 'none'
 	startTimer(duration, display)
@@ -343,6 +344,9 @@ function updateStorage(category, score) {
 		array = JSON.parse(localStorage.getItem(category))
 	}
 
+	let d = new Date()
+
+	const obj = { score, date: d.getMonth() + '/' + d.getDate() }
 	array.push(score)
 
 	localStorage.setItem(category, JSON.stringify(array))
