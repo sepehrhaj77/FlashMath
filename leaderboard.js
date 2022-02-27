@@ -25,7 +25,7 @@ if (array) {
 
 	i = 0
 	while (i < length) {
-		document.getElementById(`sub-${i + 1}`).innerText = array[i]
+		document.getElementById(`sub-${i + 1}`).innerText = '' + array[i].score + '\n' + array[i].date
 		i++
 	}
 }
@@ -41,7 +41,7 @@ if (array) {
 
 	i = 0
 	while (i < length) {
-		document.getElementById(`mult-${i + 1}`).innerText = array[i]
+		document.getElementById(`mult-${i + 1}`).innerText = '' + array[i].score + '\n' + array[i].date
 		i++
 	}
 }
@@ -57,7 +57,7 @@ if (array) {
 
 	i = 0
 	while (i < length) {
-		document.getElementById(`div-${i + 1}`).innerText = array[i]
+		document.getElementById(`div-${i + 1}`).innerText = '' + array[i].score + '\n' + array[i].date
 		i++
 	}
 }
