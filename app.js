@@ -187,6 +187,16 @@ function numberUpdater(sym) {
 	document.getElementsByClassName('bottom-number')[0].innerText = problems[probCount].num2
 }
 
+function tempAlert(msg, duration) {
+	var el = document.createElement('div')
+	el.setAttribute('style', 'position:absolute;top:40%;left:20%;background-color:white;')
+	el.innerHTML = msg
+	setTimeout(function () {
+		el.parentNode.removeChild(el)
+	}, duration)
+	document.body.appendChild(el)
+}
+
 //goes through all the problems and verifies validity of each answer
 function mainDriver() {
 	var sym = document.getElementsByClassName('symbol')[0].innerHTML
@@ -199,7 +209,7 @@ function mainDriver() {
 			numberUpdater(sym)
 		}
 	} else {
-		alert('wrong!')
+		tempAlert('Wrong!', 1000)
 	}
 }
 
