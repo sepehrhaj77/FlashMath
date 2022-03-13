@@ -281,7 +281,7 @@ function helpCheckLeaderboard(cat, score) {
 		//check the current score against the current top 5
 		let i = 0
 		while (i < highScores.length) {
-			if (score > highScores[i]) {
+			if (score > highScores[i].score) {
 				//if highest score overall, play an animation
 				if (i == 0) {
 					newRecordAnimation()
