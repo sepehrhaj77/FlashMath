@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flash Math!</title>
-    <link rel="stylesheet" href="leaderboard.css">
-</head>
-<body>
-    <h1 style="text-align: center;">Most Problems Done in 5 Minutes</h1>
-    <a href="index.html" style="margin-left: 25vw;">Back</a>
-    <div id="leaderboard-container">
-        <table id="leaderboard">
-            <tr>
-                <th>Rank</th>
-                <th>Addition</th>
-                <th>Subtraction</th>
-                <th>Multiplication</th>
-                <th>Division</th>
-            </tr>
-            <tr>
-                <td>#1</td>
-                <td id="add-1"></td>
-                <td id="sub-1"></td>
-                <td id="mult-1"></td>
-                <td id="div-1"></td>
-            </tr>
-            <tr>
-                <td>#2</td>
-                <td id="add-2"></td>
-                <td id="sub-2"></td>
-                <td id="mult-2"></td>
-                <td id="div-2"></td>
-            </tr>
-            <tr>
-                <td>#3</td>
-                <td id="add-3"></td>
-                <td id="sub-3"></td>
-                <td id="mult-3"></td>
-                <td id="div-3"></td>
-            </tr>
-            <tr>
-                <td>#4</td>
-                <td id="add-4"></td>
-                <td id="sub-4"></td>
-                <td id="mult-4"></td>
-                <td id="div-4"></td>
-            </tr>
-            <tr>
-                <td>#5</td>
-                <td id="add-5"></td>
-                <td id="sub-5"></td>
-                <td id="mult-5"></td>
-                <td id="div-5"></td>
-            </tr>
-        </table>
-    </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Flash Math!</title>
+		<link rel="stylesheet" href="leaderboard.css" />
+	</head>
+	<body>
+		<h1 style="text-align: center">Most Problems Done in 5 Minutes</h1>
+		<a href="index.html" style="margin-left: 25vw">Back</a>
+		<div id="leaderboard-container">
+			<table id="leaderboard">
+				<tr>
+					<th>Rank</th>
+					<th>Addition</th>
+					<th>Subtraction</th>
+					<th>Multiplication</th>
+					<th>Division</th>
+				</tr>
+				<tr>
+					<td>#1</td>
+					<td id="add-1"></td>
+					<td id="sub-1"></td>
+					<td id="mult-1"></td>
+					<td id="div-1"></td>
+				</tr>
+				<tr>
+					<td>#2</td>
+					<td id="add-2"></td>
+					<td id="sub-2"></td>
+					<td id="mult-2"></td>
+					<td id="div-2"></td>
+				</tr>
+				<tr>
+					<td>#3</td>
+					<td id="add-3"></td>
+					<td id="sub-3"></td>
+					<td id="mult-3"></td>
+					<td id="div-3"></td>
+				</tr>
+				<tr>
+					<td>#4</td>
+					<td id="add-4"></td>
+					<td id="sub-4"></td>
+					<td id="mult-4"></td>
+					<td id="div-4"></td>
+				</tr>
+				<tr>
+					<td>#5</td>
+					<td id="add-5"></td>
+					<td id="sub-5"></td>
+					<td id="mult-5"></td>
+					<td id="div-5"></td>
+				</tr>
+				<tr>
+					<td>Clear bottom 4</td>
+					<td><button id="resetAdd" onclick="clearAdd()">Clear</button></td>
+					<td><button id="resetSub" onclick="clearSub()">Clear</button></td>
+					<td><button id="resetMult" onclick="clearMult()">Clear</button></td>
+					<td><button id="resetDiv" onclick="clearDiv()">Clear</button></td>
+				</tr>
+			</table>
+		</div>
 
-    <script src="./leaderboard.js"></script>
-</body>
+		<script src="./leaderboard.js"></script>
+	</body>
 </html>

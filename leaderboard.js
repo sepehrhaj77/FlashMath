@@ -61,3 +61,39 @@ if (array) {
 		i++
 	}
 }
+
+function clearAdd() {
+	array = JSON.parse(localStorage.getItem('addition'))
+	if (array) {
+		let newArray = array.slice(0, 1)
+		localStorage.setItem('addition', JSON.stringify(newArray))
+	}
+	window.location.reload()
+}
+
+function clearSub() {
+	array = JSON.parse(localStorage.getItem('subtraction'))
+	if (array) {
+		let newArray = array.slice(0, 1)
+		localStorage.setItem('subtraction', JSON.stringify(newArray))
+	}
+	window.location.reload()
+}
+
+function clearMult() {
+	array = JSON.parse(localStorage.getItem('multiplication'))
+	if (array) {
+		let newArray = array.slice(0, 1)
+		localStorage.setItem('multiplication', JSON.stringify(newArray))
+	}
+	window.location.reload()
+}
+
+function clearDiv() {
+	array = JSON.parse(localStorage.getItem('division'))
+	if (array) {
+		let newArray = array.slice(0, 1)
+		localStorage.setItem('division', JSON.stringify(newArray))
+	}
+	window.location.reload()
+}
